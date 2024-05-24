@@ -6,8 +6,8 @@
 	path = repos/meta-openembedded
 	url = git@github.com:openembedded/meta-openembedded.git
 	branch = nanbield
-[submodule "layers/meta-ros"]
-	path = layers/meta-ros
+[submodule "repos/meta-ros"]
+	path = repos/meta-ros
 	url = git@github.com:ros/meta-ros.git
 	branch = nanbield
 [submodule "layers/meta-kria"]
@@ -42,3 +42,23 @@
 	path = layers/meta-qt5
 	url = https://github.com/meta-qt5/meta-qt5
 	branch = nanbield
+[submodule "layers/meta-virtualization"]
+	path = layers/meta-virtualization
+	url = https://git.yoctoproject.org/meta-virtualization/
+	branch = nanbield
+[submodule "layers/meta-openamp"]
+	path = layers/meta-openamp
+	url = git@github.com:OpenAMP/meta-openamp.git
+	branch = master
+[submodule "layers/meta-xilinx-tsn"]
+	path = layers/meta-xilinx-tsn
+	url = git@github.com:Xilinx/meta-xilinx-tsn.git
+	branch = master
+[submodule "layers/meta-aws"]
+	path = layers/meta-aws
+	url = https://git.yoctoproject.org/meta-aws
+	branch = nanbield
+[submodule "layers/meta-system-controller"]
+	path = layers/meta-system-controller
+	url = git@github.com:Xilinx/meta-system-controller.git
+	branch = master
