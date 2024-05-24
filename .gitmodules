@@ -37,3 +37,4 @@
 [submodule "layers/meta-mingw"]
 	path = layers/meta-mingw
 	url = https://git.yoctoproject.org/meta-mingw
+	branch = nanbield
