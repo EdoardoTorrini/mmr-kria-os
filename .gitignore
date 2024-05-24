@@ -19,3 +19,4 @@ bitbake/doc/manual/pdf/
 bitbake/doc/manual/txt/
 bitbake/doc/manual/xhtml/
 pull-*/
+.vscode
