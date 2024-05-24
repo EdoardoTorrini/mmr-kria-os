@@ -34,3 +34,6 @@
 	path = repos/meta-security
 	url = git://git.yoctoproject.org/meta-security
 	branch = nanbield
+[submodule "layers/meta-mingw"]
+	path = layers/meta-mingw
+	url = https://git.yoctoproject.org/meta-mingw
