@@ -14,3 +14,7 @@
 	path = layers/meta-kria
 	url = git@github.com:Xilinx/meta-kria.git
 	branch = nanbield
+[submodule "layers/meta-xilinx"]
+	path = layers/meta-xilinx
+	url = git@github.com:Xilinx/meta-xilinx.git
+	branch = nanbield
