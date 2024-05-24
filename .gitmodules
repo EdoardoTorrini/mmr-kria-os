@@ -38,3 +38,7 @@
 	path = layers/meta-mingw
 	url = https://git.yoctoproject.org/meta-mingw
 	branch = nanbield
+[submodule "layers/meta-qt5"]
+	path = layers/meta-qt5
+	url = https://github.com/meta-qt5/meta-qt5
+	branch = nanbield
