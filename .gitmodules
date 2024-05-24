@@ -1,0 +1,16 @@
+[submodule "repos/poky"]
+	path = repos/poky
+	url = git@github.com:yoctoproject/poky.git
+	branch = nanbield
+[submodule "repos/meta-openembedded"]
+	path = repos/meta-openembedded
+	url = git@github.com:openembedded/meta-openembedded.git
+	branch = nanbield
+[submodule "layers/meta-ros"]
+	path = layers/meta-ros
+	url = git@github.com:ros/meta-ros.git
+	branch = nanbield
+[submodule "layers/meta-kria"]
+	path = layers/meta-kria
+	url = git@github.com:Xilinx/meta-kria.git
+	branch = nanbield
