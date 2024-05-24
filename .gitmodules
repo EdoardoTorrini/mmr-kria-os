@@ -18,3 +18,19 @@
 	path = layers/meta-xilinx
 	url = git@github.com:Xilinx/meta-xilinx.git
 	branch = nanbield
+[submodule "layers/meta-xilinx-tools"]
+	path = layers/meta-xilinx-tools
+	url = git@github.com:Xilinx/meta-xilinx-tools.git
+	branch = nanbield
+[submodule "layers/meta-petalinux"]
+	path = layers/meta-petalinux
+	url = git@github.com:Xilinx/meta-petalinux.git
+	branch = nanbield
+[submodule "layers/meta-jupyter"]
+	path = layers/meta-jupyter
+	url = git@github.com:Xilinx/meta-jupyter.git
+	branch = master
+[submodule "repos/meta-security"]
+	path = repos/meta-security
+	url = git://git.yoctoproject.org/meta-security
+	branch = nanbield
