@@ -1,1 +1,2 @@
 libtinfo5
+liblz4-tool
