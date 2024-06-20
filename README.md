@@ -8,9 +8,9 @@
  4. Build as much recipes as possible with: `bitbake -k kria-image-full-cmdline`
  5. Fix failed recipes
 
-
 ## Convention over configuration
 The default location of hardware description file, in the form of XSA file, is _platform/platform.xsa_, according to the default configuration of _local.conf_. Replace this file to change hardware description.
+
 You may need to run `bitbake -c cleanall pmu-firmware fsbl-firmware` after it.
 
 ## Build process
