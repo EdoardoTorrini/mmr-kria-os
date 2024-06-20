@@ -8,12 +8,21 @@
  4. Build as much recipes as possible with: `bitbake -k kria-image-full-cmdline`
  5. Fix failed recipes
 
-## Convention over configuration
+## Convention-over-configuration
 The default location of hardware description file, in the form of XSA file, is _platform/platform.xsa_, according to the default configuration of _local.conf_. Replace this file to change hardware description.
 
 You may need to run `bitbake -c cleanall pmu-firmware fsbl-firmware` after it.
 
-## Build process
+## Build Process
 `bitbake -k kria-image-full-cmdline` is the suggested command to build kria image.
 
 You may need to run `bitbake -c cleanall pmu-firmware fsbl-firmware` whenever _platform.xsa_ changes.
+
+## Common Issues
+> **My image runs well on QEMU, but doesn't work on the real board.**
+> QEMU is good at validating images up to the platform description (userspace is ok, u-boot and device tree too) but cannot simulate boundary blocks such as PMU and FPGA. So, if your design describes peripherals such as CAN controller or GPIO, make sure to upload the boot firmware (_BOOT.bin_) on PMU through `xmutil bootfw_update -i BOOT.bin`, otherwise power domain errors will arise.
+
+> **My new platform boots on QEMU, but doesn't boot on the devboard**
+> There can be several reasons. The most likely one is that you are running a production image that expects a FPGA bitstream coherent with its device tree.
+> Is there a bitstream (_.bit_) in your BOOT.bin? check it with `bootgen -read BOOT.bin`
+> Have you uploaded the boot firmware to the PM Unit? Run `xmutil bootfw_update -i BOOT.bin`. If the current image doesn't boot, run a development image, flash BOOT.bin and then try again with the production image.
