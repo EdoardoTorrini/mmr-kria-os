@@ -62,3 +62,6 @@
 	path = layers/meta-kria
 	url = git@github.com:mc-cat-tty/meta-kria-mmr
 	branch = nanbield
+[submodule "repos/device-tree-xlnx"]
+	path = repos/device-tree-xlnx
+	url = git@github.com:Xilinx/device-tree-xlnx
