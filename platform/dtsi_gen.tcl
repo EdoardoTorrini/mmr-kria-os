@@ -1,1 +1,0 @@
-createdts -hw /home/francesco/Documents/mmr-kria-os/platform/platform.xsa -platform-name kr260 -git-branch xlnx_rel_v2022.2 -compile -out /home/francesco/Documents/mmr-kria-os/platform/test
