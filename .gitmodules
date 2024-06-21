@@ -58,3 +58,7 @@
 	path = layers/meta-system-controller
 	url = git@github.com:Xilinx/meta-system-controller.git
 	branch = master
+[submodule "meta-kria-mmr"]
+	path = layers/meta-kria
+	url = git@github.com:mc-cat-tty/meta-kria-mmr
+	branch = nanbield
