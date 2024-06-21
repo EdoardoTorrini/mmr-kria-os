@@ -65,3 +65,4 @@
 [submodule "repos/device-tree-xlnx"]
 	path = repos/device-tree-xlnx
 	url = git@github.com:Xilinx/device-tree-xlnx
+	branch = xlnx_rel_v2023.2
