@@ -10,10 +10,6 @@
 	path = repos/meta-ros
 	url = git@github.com:ros/meta-ros.git
 	branch = nanbield
-[submodule "layers/meta-kria"]
-	path = layers/meta-kria
-	url = git@github.com:Xilinx/meta-kria.git
-	branch = nanbield
 [submodule "repos/meta-xilinx"]
 	path = repos/meta-xilinx
 	url = git@github.com:Xilinx/meta-xilinx.git
