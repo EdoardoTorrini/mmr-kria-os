@@ -29,4 +29,4 @@ if [ -n "${BB_ENV_EXTRAWHITE}" ]; then
 fi
 source $ROOT/repos/poky/oe-init-build-env "$@"
 
-cp <(cat $ROOT/local.conf | envsubst) $ROOT/build/conf/local.conf
+cp <(cat $ROOT/local.conf | envsubst) $BUILDDIR/conf/local.conf
