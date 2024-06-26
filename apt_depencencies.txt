@@ -1,1 +1,1 @@
-libtinfo5 xvfb x11-utils
+libtinfo5 xvfb x11-utils dbus-x11
