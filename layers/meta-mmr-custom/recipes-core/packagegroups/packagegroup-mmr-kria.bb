@@ -21,6 +21,7 @@ KRIA_PACKAGES = " \
         tree \
         less \
         vim \
+        spidev-test \
         tzdata \
         xmutil \
         kria-dashboard \
