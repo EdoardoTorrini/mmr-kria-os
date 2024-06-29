@@ -1,0 +1,27 @@
+&{/} {
+  &amba {
+    /delete-node/ spi@ff040000;
+
+    spi@ff040000 {
+      compatible = "cdns,spi-r1p6";
+      status = "okay";
+      interrupt-parent = <0x05>;
+      interrupts = <0x00 0x13 0x04>;
+      reg = <0x00 0xff040000 0x00 0x1000>;
+      clock-names = "ref_clk\0pclk";
+      #address-cells = <0x01>;
+      #size-cells = <0x00>;
+      power-domains = <0x12 0x23>;
+      clocks = <0x04 0x3a 0x04 0x1f>;
+      is-decoded-cs = <0x00>;
+      num-cs = <0x02>;
+      phandle = <0x66>;
+      
+      spidev@0 {
+        compatible = "spidev";
+        spi-max-frequency = <200000000>;
+        reg = <0>;
+      };
+	  };
+  };
+};
