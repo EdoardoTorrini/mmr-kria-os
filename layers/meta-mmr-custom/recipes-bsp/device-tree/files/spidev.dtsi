@@ -1,0 +1,10 @@
+&spi0 {
+  status = "okay";
+  
+  spidev0: spidev@0 {
+    status = "okay";
+    compatible = "rohm,dh2228fv";
+    spi-max-frequency = <200000000>;
+    reg = <0>;
+  };
+};
