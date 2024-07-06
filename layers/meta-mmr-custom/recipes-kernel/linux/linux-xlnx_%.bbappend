@@ -14,6 +14,7 @@ SRC_URI =+ " \
     file://001-linux-rt-kernel.patch;apply=yes \
 "
 
-# do_patch:append () {
+do_patch:prepend () {
 #     ${STAGING_KERNEL_DIR}/.git/rebase-apply/resolve_rejects
-# }
+    bberror "[ CUSTOM MSG ]: Use .git/rebase-apply/resolve_rejects command in ${STAGING_KERNEL_DIR}"
+}
