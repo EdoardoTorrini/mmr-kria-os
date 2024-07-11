@@ -8,7 +8,7 @@
 	branch = nanbield
 [submodule "repos/meta-ros"]
 	path = repos/meta-ros
-	url = git@github.com:ros/meta-ros.git
+	url = git@github.com:mc-cat-tty/meta-ros.git 
 	branch = nanbield
 [submodule "repos/meta-xilinx"]
 	path = repos/meta-xilinx
@@ -20,7 +20,7 @@
 	branch = nanbield
 [submodule "layers/meta-petalinux"]
 	path = layers/meta-petalinux
-	url = git@github.com:Xilinx/meta-petalinux.git
+	url = git@github.com:mc-cat-tty/meta-petalinux.git 
 	branch = nanbield
 [submodule "layers/meta-jupyter"]
 	path = layers/meta-jupyter
