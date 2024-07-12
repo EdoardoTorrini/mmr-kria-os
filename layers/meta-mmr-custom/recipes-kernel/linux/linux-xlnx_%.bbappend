@@ -2,19 +2,21 @@
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
-SRC_URI += "file://custom_defconfig"
-
 KBUILD_DEFCONFIG:zynqmp := "custom_defconfig"
+RT_PATCH = "001-linux-rt-kernel.patch"
 
-do_kernel_metadata:prepend () {
-    cp ${WORKDIR}/${KBUILD_DEFCONFIG} ${S}/arch/${ARCH}/configs/${KBUILD_DEFCONFIG}
-}
-
-SRC_URI =+ " \ 
-    file://001-linux-rt-kernel.patch;apply=yes \
+SRC_URI += " \
+  file://${KBUILD_DEFCONFIG} \
+  file://${RT_PATCH};apply=no \
 "
 
-do_patch:prepend () {
-#     ${STAGING_KERNEL_DIR}/.git/rebase-apply/resolve_rejects
-    bberror "[ CUSTOM MSG ]: Use .git/rebase-apply/resolve_rejects command in ${STAGING_KERNEL_DIR}"
+do_kernel_metadata:prepend () {
+  cp ${WORKDIR}/${KBUILD_DEFCONFIG} ${S}/arch/${ARCH}/configs/${KBUILD_DEFCONFIG}
 }
+
+do_rt_patch () {
+  cd ${STAGING_KERNEL_DIR}
+  git apply --reject /home/francesco/Documents/mmr-kria-os/layers/meta-mmr-custom/recipes-kernel/linux/files/001-linux-rt-kernel.patch || :
+}
+
+addtask do_rt_patch before do_patch after do_kernel_metadata
