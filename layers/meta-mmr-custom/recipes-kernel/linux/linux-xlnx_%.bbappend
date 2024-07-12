@@ -16,7 +16,7 @@ do_kernel_metadata:prepend () {
 
 do_rt_patch () {
   cd ${STAGING_KERNEL_DIR}
-  git apply --reject /home/francesco/Documents/mmr-kria-os/layers/meta-mmr-custom/recipes-kernel/linux/files/001-linux-rt-kernel.patch || :
+  git apply --reject ${WORKDIR}/${RT_PATCH} || :
 }
 
 addtask do_rt_patch before do_patch after do_kernel_metadata
