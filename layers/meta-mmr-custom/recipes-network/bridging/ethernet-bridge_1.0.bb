@@ -1,9 +1,11 @@
 LICENSE="CLOSED"
-sdf
-FILEEXTRAPATHS:prepend = "${THISDIR}/files:"
-SRC_URI = "file://networkd/"
 
-do_install:append () {
-  install -d /etc/systemd/network
-  install ${WORKDIR}/networkd/* /etc/systemd/network
+FILEEXTRAPATHS:prepend = "${THISDIR}/files:"
+SRC_URI = "file://networkd"
+
+do_install() {
+  install -d ${D}${sysconfdir}/systemd/network
+  install ${WORKDIR}/networkd/* ${D}${sysconfdir}/systemd/network
 }
+
+FILES:${PN} += "${D}${sysconfdir}/systemd/network"
