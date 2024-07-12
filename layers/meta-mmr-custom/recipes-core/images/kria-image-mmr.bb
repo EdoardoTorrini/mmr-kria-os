@@ -23,4 +23,5 @@ IMAGE_INSTALL = " \
     tmux \
     rt-tests \
     ros-core \
+    apps-actuator \
 "
