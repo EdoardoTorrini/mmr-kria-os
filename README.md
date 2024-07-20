@@ -7,7 +7,7 @@
  3. Install extra dependencies by running: `sudo apt install < apt_dependencies.txt`
  4. Edit `DL_DIR`, `SSTATE_DIR`, `TMPDIR`, `HDF_PATH` in _local.conf_ if necessary. These parameters will allow you to place _downloads_, _sstate_ and _tmp_ dirs in a folder different from _build_ (the default one)
  5. Source BitBake environment: `source setupsdk`
- 6. Build as much recipes as possible with: `bitbake -k kria-image-full-cmdline`
+ 6. Build as much recipes as possible with: `bitbake -k kria-image-mmr`
  7. Fix failed recipes
 
 ## Convention-over-configuration
@@ -16,7 +16,7 @@ The default location of hardware description file, in the form of XSA file, is _
 You may need to run `bitbake -c cleanall pmu-firmware fsbl-firmware` after it.
 
 ## Build Process
-`bitbake -k kria-image-full-cmdline` is the suggested command to build kria image.
+`bitbake -k kria-image-mmr` is the suggested command to build kria image.
 
 You may need to run `bitbake -c cleanall pmu-firmware fsbl-firmware` whenever _platform.xsa_ changes.
 
