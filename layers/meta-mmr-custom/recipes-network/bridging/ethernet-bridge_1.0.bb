@@ -8,4 +8,4 @@ do_install() {
   install ${WORKDIR}/networkd/* ${D}${sysconfdir}/systemd/network
 }
 
-FILES:${PN} += "${D}${sysconfdir}/systemd/network"
+FILES:${PN} += "${sysconfdir}/systemd/network"
