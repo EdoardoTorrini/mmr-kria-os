@@ -18,7 +18,8 @@ You may need to run `bitbake -c cleanall pmu-firmware fsbl-firmware` after it.
 ## Build Process
 `bitbake -k kria-image-mmr` is the suggested command to build kria image.
 
-You may need to run `bitbake -c cleanall pmu-firmware fsbl-firmware` whenever _platform.xsa_ changes.
+### Important notes
+Run `bitbake -c cleanall pmu-firmware fsbl-firmware device-tree` whenever _platform.xsa_ changes.
 
 ## Common Issues
 > **My image runs well on QEMU, but doesn't work on the real board.**
