@@ -23,3 +23,5 @@ pull-*/
 
 *.xsa
 .Xil/
+platform/*
+
