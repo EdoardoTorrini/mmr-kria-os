@@ -1,26 +1,23 @@
 LICENSE="CLOSED"
 
-FILEEXTRAPATHS:prepend = "${THISDIR}/files:"
+SRC_URI = "file://gpio_enable.sh \
+           file://gpio.service"
 
-SCR_URI = "file://gpio_enable.sh \
-            file://gpio.service"
+inherit systemd
 
-inherit update-rc.d systemd
 
-SYSTEMD_PACKAGES = "${PN}"
-INITSCRIPT_PACKAGES = "${PN}"
+RDEPENDS:${PN} += "bash"
 
 SYSTEMD_SERVICE_${PN} = "gpio.service"
+SYSTEMD_AUTO_ENABLE = "enable"
 
+do_install() {
+    install -d ${D}${bindir}
+    install -m 0755 ${WORKDIR}/gpio_enable.sh ${D}${bindir}/gpio_enable.sh
 
-do_install(){
-    install -d ${D}${libexecdir}
-    install -m 0755 ${WORKDIR}/gpio_enable.sh ${D}{libexecdir}/gpio_enable.sh
     install -d ${D}${systemd_system_unitdir}
-    install -m 0644 ${WORKDIR}/gpio.service ${D}${systemd_system_unitdir}
-    
+    install -m 0644 ${WORKDIR}/gpio.service ${D}${systemd_system_unitdir}/gpio.service
 }
 
-FILES_${PN} += "${libexecdir}/gpio_enable.sh"
-FILES_${PN} += "${systemd_system_unitdir}/gpio.service"
-
+FILES:${PN} += "${bindir}/gpio_enable.sh"
+FILES:${PN} += "${systemd_system_unitdir}/gpio.service"
