@@ -1,0 +1,11 @@
+[Unit]
+Description=Activate script for the setup of can interfaces
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/can_enable.sh
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target

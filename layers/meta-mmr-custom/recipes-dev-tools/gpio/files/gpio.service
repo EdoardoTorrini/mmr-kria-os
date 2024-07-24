@@ -2,9 +2,8 @@
 Description=Export all gpios and define their direction
 After=network.target
 [Service]
-Uset=root
+User=root
 Group=root
-Type=oneshoot
 ExecStart=/usr/bin/gpio_enable.sh
 
 [Install]
