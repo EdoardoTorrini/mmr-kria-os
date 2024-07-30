@@ -10,16 +10,18 @@ SECTION = "devel"
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = ""
 
-ROS_CN = "mmr-kria-drive"
-ROS_BPN = "mmr-kria-drive"
+ROS_CN = "1_actuation"
+ROS_BPN = "canbus_bridge"
 
 ROS_BUILD_DEPENDS = " \
-    rosidl-default-generators\
     rcl \
     rcl-interfaces \
     rclcpp \
     rcpputils \
     std-msgs \
+    mmr-kria-msgs \
+    can-msgs \
+    mmr-edf \
 "
 
 ROS_BUILDTOOL_DEPENDS = " \
@@ -31,13 +33,14 @@ ROS_EXPORT_DEPENDS = ""
 ROS_BUILDTOOL_EXPORT_DEPENDS = ""
 
 ROS_EXEC_DEPENDS = " \
-    ament-cmake-ros \
-    rosidl-default-runtime \
     rcl \
     rcl-interfaces \
     rclcpp \
     rcpputils \
     std-msgs \
+    mmr-kria-msgs \
+    can-msgs \
+    mmr-edf \
 "
 
 DEPENDS = "${ROS_BUILD_DEPENDS} ${ROS_BUILDTOOL_DEPENDS}"
@@ -47,15 +50,11 @@ DEPENDS += "${ROS_EXPORT_DEPENDS} ${ROS_BUILDTOOL_EXPORT_DEPENDS}"
 
 RDEPENDS:${PN} += "${ROS_EXEC_DEPENDS}"
 
-ROS_BRANCH ?= "branch=master"
+ROS_BRANCH ?= "branch=dev_yocto"
 SRC_URI = "git://git@github.com/mmr-driverless/mmr-kria-drive.git;${ROS_BRANCH};protocol=ssh"
-SRCREV = "96e8e023360d3263e640d6bdfaf396ae7b3d8d15"
-S = "${WORKDIR}/git/src/0_common/mmr_kria_base"
+SRCREV = "2569a174d15b47ecb0f78006702c4bb9fbf2ff79"
+S = "${WORKDIR}/git/src/1_actuation/canbus_bridge"
 
 ROS_BUILD_TYPE = "ament_cmake"
 
 inherit ros_${ROS_BUILD_TYPE}
-
-# do_configure:prepend() {
-#     export PYTHONPATH="/home/cristian/.local/lib/python3.10/site-packages:/home/cristian/.local/bin:/home/cristian/Desktop/formula/mmr-kria-os/repos/poky/bitbake/lib:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages:/home/cristian/Desktop/formula/mmr-kria-os/repos/poky/bitbake/lib:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages"
-# }

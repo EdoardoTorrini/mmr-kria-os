@@ -9,6 +9,12 @@ COMPATIBLE_MACHINE:kria = "${MACHINE}"
 IMAGE_FEATURES += "splash ssh-server-openssh hwcodecs package-management"
 EXTRA_IMAGE_FEATURES = "tools-sdk tools-debug"
 
+MMR_ROS_NODE = " \
+    mmr-kria-msgs \
+    mmr-edf \
+    mmr-canbus-bridge \
+"
+
 IMAGE_INSTALL = " \
     packagegroup-core-boot \
     packagegroup-petalinux-kria \
@@ -24,5 +30,5 @@ IMAGE_INSTALL = " \
     rt-tests \
     ros-core \
     rosidl-adapter \
-    mmr-kria-drive \
+    ${MMR_ROS_NODE} \
 "
