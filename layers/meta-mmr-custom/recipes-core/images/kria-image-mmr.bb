@@ -23,4 +23,6 @@ IMAGE_INSTALL = " \
     tmux \
     rt-tests \
     ros-core \
+    rosidl-adapter \
+    mmr-kria-drive \
 "
