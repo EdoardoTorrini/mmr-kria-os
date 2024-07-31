@@ -13,6 +13,7 @@ MMR_ROS_NODE = " \
     mmr-kria-msgs \
     mmr-edf \
     mmr-canbus-bridge \
+    mmr-canopen-bridge \
 "
 
 IMAGE_INSTALL = " \

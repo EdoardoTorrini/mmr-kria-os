@@ -1,42 +1,46 @@
 inherit ros_distro_humble
 inherit ros_superflore_generated
 
-DESCRIPTION = "Build mmr-kria-base of mmr-driverless/mmr-kria-drive"
+DESCRIPTION = "Build canbus_bridge of mmr-driverless/mmr-kria-drive "
 AUTHOR = "Edoardo Torrini <edoardo.torrini@gmail.com>"
 ROS_AUTHOR = "Edoardo Torrini <edoardo.torrini@gmail.com>"
-
+HOMEPAGE = "https://wiki.ros.org"
 SECTION = "devel"
 
 LICENSE = "CLOSED"
 LIC_FILES_CHKSUM = ""
 
-ROS_CN = "0_common"
-ROS_BPN = "mmr_kria_base"
+ROS_CN = "1_actuation"
+ROS_BPN = "canopen_bridge"
 
 ROS_BUILD_DEPENDS = " \
-    builtin-interfaces \
+    rcl \
+    rcl-interfaces \
+    rclcpp \
+    rcpputils \
     std-msgs \
+    mmr-kria-msgs \
+    can-msgs \
+    mmr-edf \
 "
 
 ROS_BUILDTOOL_DEPENDS = " \
     ament-cmake-native \
-    rosidl-default-generators-native \
 "
 
-ROS_EXPORT_DEPENDS = " \
-    builtin-interfaces \
-"
+ROS_EXPORT_DEPENDS = ""
 
 ROS_BUILDTOOL_EXPORT_DEPENDS = ""
 
 ROS_EXEC_DEPENDS = " \
-    builtin-interfaces \
-    rosidl-default-runtime \
+    rcl \
+    rcl-interfaces \
+    rclcpp \
+    rcpputils \
     std-msgs \
-"
-
-ROS_TEST_DEPENDS = " \
-    ament-lint-common \
+    mmr-kria-msgs \
+    can-msgs \
+    mmr-edf \
 "
 
 DEPENDS = "${ROS_BUILD_DEPENDS} ${ROS_BUILDTOOL_DEPENDS}"
@@ -49,7 +53,7 @@ RDEPENDS:${PN} += "${ROS_EXEC_DEPENDS}"
 ROS_BRANCH ?= "branch=master"
 SRC_URI = "git://git@github.com/mmr-driverless/mmr-kria-drive.git;${ROS_BRANCH};protocol=ssh"
 SRCREV = "${AUTOREV}"
-S = "${WORKDIR}/git/src/0_common/mmr_kria_base"
+S = "${WORKDIR}/git/src/1_actuation/canopen_bridge"
 
 ROS_BUILD_TYPE = "ament_cmake"
 
