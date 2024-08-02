@@ -14,6 +14,7 @@ MMR_ROS_NODE = " \
     mmr-edf \
     mmr-canbus-bridge \
     mmr-canopen-bridge \
+    mmr-as-manager \
 "
 
 IMAGE_INSTALL = " \
