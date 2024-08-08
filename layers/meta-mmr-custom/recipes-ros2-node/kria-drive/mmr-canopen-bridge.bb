@@ -1,7 +1,7 @@
 inherit ros_distro_humble
 inherit ros_superflore_generated
 
-DESCRIPTION = "Build canbus_bridge of mmr-driverless/mmr-kria-drive "
+DESCRIPTION = "Build canopen_bridge of mmr-driverless/mmr-kria-drive "
 AUTHOR = "Edoardo Torrini <edoardo.torrini@gmail.com>"
 ROS_AUTHOR = "Edoardo Torrini <edoardo.torrini@gmail.com>"
 HOMEPAGE = "https://wiki.ros.org"
@@ -50,7 +50,7 @@ DEPENDS += "${ROS_EXPORT_DEPENDS} ${ROS_BUILDTOOL_EXPORT_DEPENDS}"
 
 RDEPENDS:${PN} += "${ROS_EXEC_DEPENDS}"
 
-ROS_BRANCH ?= "branch=dev_clutch"
+ROS_BRANCH ?= "branch=master"
 SRC_URI = "git://git@github.com/mmr-driverless/mmr-kria-drive.git;${ROS_BRANCH};protocol=ssh"
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git/src/1_actuation/canopen_bridge"

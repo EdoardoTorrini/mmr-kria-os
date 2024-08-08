@@ -1,7 +1,7 @@
 inherit ros_distro_humble
 inherit ros_superflore_generated
 
-DESCRIPTION = "Build canbus_bridge of mmr-driverless/mmr-kria-drive "
+DESCRIPTION = "Build control_node of mmr-driverless/mmr-kria-drive "
 AUTHOR = "Edoardo Torrini <edoardo.torrini@gmail.com>"
 ROS_AUTHOR = "Simone Bondi <simonebondi456@gmail.com>"
 HOMEPAGE = "https://wiki.ros.org"
