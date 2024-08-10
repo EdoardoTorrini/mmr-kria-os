@@ -50,7 +50,7 @@ DEPENDS += "${ROS_EXPORT_DEPENDS} ${ROS_BUILDTOOL_EXPORT_DEPENDS}"
 
 RDEPENDS:${PN} += "${ROS_EXEC_DEPENDS}"
 
-ROS_BRANCH ?= "branch=master"
+ROS_BRANCH ?= "branch=dev/gear_logic"
 SRC_URI = "git://git@github.com/mmr-driverless/mmr-kria-drive.git;${ROS_BRANCH};protocol=ssh"
 SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git/src/1_actuation/canbus_bridge"
