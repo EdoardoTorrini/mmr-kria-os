@@ -14,6 +14,7 @@ MMR_ROS_NODE = " \
     mmr-boot \
     mmr-kria-msgs \
     mmr-edf \
+    mmr-as-manager \
     mmr-canbus-bridge \
     mmr-canopen-bridge \
     mmr-pure-pursuit \
