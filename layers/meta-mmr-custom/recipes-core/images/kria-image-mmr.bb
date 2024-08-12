@@ -1,4 +1,4 @@
-DESCRIPTION = "A full featured console-only image for Kria SOM."
+DESCRIPTION = "A fully featured console-only image for Kria SOM."
 
 inherit core-image
 IMAGE_CLASSES += "kria-image"
@@ -8,6 +8,17 @@ COMPATIBLE_MACHINE:kria = "${MACHINE}"
 
 IMAGE_FEATURES += "splash ssh-server-openssh hwcodecs package-management"
 EXTRA_IMAGE_FEATURES = "tools-sdk tools-debug"
+
+MMR_ROS_NODE = " \
+    login-shell-profile \
+    mmr-boot \
+    mmr-kria-msgs \
+    mmr-edf \
+    mmr-as-manager \
+    mmr-canbus-bridge \
+    mmr-canopen-bridge \
+    mmr-pure-pursuit \
+"
 
 IMAGE_INSTALL = " \
     packagegroup-core-boot \
@@ -20,8 +31,10 @@ IMAGE_INSTALL = " \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     udev-extraconf \
     spidev-test \
+    mmr-dac-tester \
     tmux \
     rt-tests \
     ros-core \
-    apps-actuator \
+    rosidl-adapter \
+    ${MMR_ROS_NODE} \
 "

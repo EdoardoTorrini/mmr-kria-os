@@ -1,0 +1,12 @@
+[Unit]
+Description=Start the MMR Stack
+After=network.target
+
+[Service]
+User=root
+Group=root
+RemainAfterExit=yes
+ExecStart=/usr/bin/mmr_boot.sh
+
+[Install]
+WantedBy=multi-user.target
