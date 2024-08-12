@@ -15,5 +15,5 @@ EXTRA_OECMAKE = ""
 
 do_install(){
     install -d ${D}${bindir}
-    install -m 755 dac_test ${D}${bindir}
+    install -m 755 mmr_dac_test ${D}${bindir}
 }
