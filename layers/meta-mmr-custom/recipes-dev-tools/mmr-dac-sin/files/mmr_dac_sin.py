@@ -118,6 +118,9 @@ def main(device: str, offset: float, amplitude: float, frequency: float):
     sequence = sequence.tolist()
     scale_amplitude = create_scale(amplitude)
 
+    mcp4921.send(CMD, 0)
+    sleep(3)
+
     while True:
         for val in sequence:
             mcp4921.send(CMD, scale_amplitude(val)+offset)
