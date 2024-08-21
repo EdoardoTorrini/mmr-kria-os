@@ -66,9 +66,9 @@ class SPI_DAC:
         ioctl(self.fd, SPI_IOC_WR_MAX_SPEED_HZ, s)
         self.speed = speed
 
-    def write(self, data: int, byte_num: int):
+    def write(self, data: int, bytes_num: int):
         # content = ctypes.create_strinag_buffer(content)
-        content = (ctypes.c_char*byte_num)(*data.to_bytes(byte_num))
+        content = (ctypes.c_char*bytes_num)(*data.to_bytes(bytes_num))
         
         # Building spi_ioc_transfer struct
         transfer = pack(
@@ -107,19 +107,20 @@ def main(device: str, offset: float, amplitude: float, frequency: float):
     
     if (offset - amplitude < 0 or offset + amplitude > 1): print("Warning: cutting wave")
     
-    amplitude = int(amplitude * FSR)
-    offset = int(offset * FSR)
+    scale_12_bit = create_scale(FSR)
+    amplitude = scale_12_bit(amplitude)
+    offset = scale_12_bit(offset)
     
     mcp4921 = MCP4921(device)
     signal.signal(signal.SIGINT, lambda sig, frame: mcp4921.send(CMD, 0) or exit(0))
 
     sequence = np.sin(np.linspace(0, 1, 100, False) * 2 * np.pi)
     sequence = sequence.tolist()
-    scale_12_bit = create_scale(amplitude)
+    scale_amplitude = create_scale(amplitude)
 
     while True:
         for val in sequence:
-            mcp4921.send(CMD, scale_12_bit(val)+offset)
+            mcp4921.send(CMD, scale_amplitude(val)+offset)
             sleep(1/(len(sequence)*frequency))
 
 if __name__ == "__main__":
