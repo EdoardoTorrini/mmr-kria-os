@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/python3
 
 import ctypes, struct
 import numpy as np
