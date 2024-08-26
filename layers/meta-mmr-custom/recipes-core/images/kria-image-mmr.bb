@@ -32,6 +32,8 @@ IMAGE_INSTALL = " \
     udev-extraconf \
     spidev-test \
     mmr-dac-tester \
+    mmr-dac-sin \
+    mmr-wdg-gen \
     tmux \
     rt-tests \
     ros-core \

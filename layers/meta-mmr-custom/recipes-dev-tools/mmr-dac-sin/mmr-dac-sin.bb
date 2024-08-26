@@ -2,13 +2,9 @@ SUMMARY = "mmr-dac-sin"
 DESCRIPTION = "Test APS DAC by sending a sin wave"
 LICENSE = "CLOSED"
 
-DEPENDS = ""
 SRC_URI = "file://mmr_dac_sin.py"
- 
-EXTRA_OECMAKE = ""
 
-RDEPENDS:${PN} = "python3 python3-native"
-DEPENDS = "python3 python3-native"
+RDEPENDS:${PN} = "python3-core"
 
 do_install(){
     install -d ${D}${bindir}
