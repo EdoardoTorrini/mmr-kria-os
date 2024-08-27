@@ -1,0 +1,11 @@
+[Unit]
+Description=Export all gpios and define their direction
+After=network.target
+[Service]
+User=root
+Group=root
+ExecStart=/usr/bin/apps_initializer.sh
+
+[Install]
+WantedBy=multi-user.target
+
