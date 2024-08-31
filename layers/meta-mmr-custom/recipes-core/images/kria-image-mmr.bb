@@ -39,4 +39,6 @@ IMAGE_INSTALL = " \
     ros-core \
     rosidl-adapter \
     ${MMR_ROS_NODE} \
+    apps-initializer \
+    apps-systemd \
 "
