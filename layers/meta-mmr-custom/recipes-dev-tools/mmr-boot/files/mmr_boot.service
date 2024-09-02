@@ -1,6 +1,7 @@
 [Unit]
 Description=Start the MMR Stack
-After=network.target
+After=network.target network-online.target
+Wants=network-online.target
 
 [Service]
 User=root
@@ -10,3 +11,4 @@ ExecStart=/usr/bin/mmr_boot.sh
 
 [Install]
 WantedBy=multi-user.target
+
