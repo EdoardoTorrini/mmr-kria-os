@@ -18,6 +18,7 @@ MMR_ROS_NODE = " \
     mmr-canbus-bridge \
     mmr-canopen-bridge \
     mmr-pure-pursuit \
+    mmr-data-logger \
 "
 
 IMAGE_INSTALL = " \
