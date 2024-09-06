@@ -52,7 +52,7 @@ RDEPENDS:${PN} += "${ROS_EXEC_DEPENDS}"
 
 ROS_BRANCH ?= "branch=dev/fault_check"
 SRC_URI = "git://git@github.com/mmr-driverless/mmr-kria-drive.git;${ROS_BRANCH};protocol=ssh"
-SRCREV = "${AUTOREV}"
+SRCREV = "b316121cc1cf34afee3f8685d54618f998467ad4"
 S = "${WORKDIR}/git/src/1_actuation/canopen_bridge"
 
 ROS_BUILD_TYPE = "ament_cmake"
