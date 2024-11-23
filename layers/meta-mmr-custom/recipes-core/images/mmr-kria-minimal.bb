@@ -11,14 +11,11 @@ EXTRA_IMAGE_FEATURES = "tools-sdk tools-debug"
 
 MMR_ROS_NODE = " \
     login-shell-profile \
-    mmr-boot \
     mmr-kria-msgs \
     mmr-edf \
-    mmr-as-manager \
     mmr-canbus-bridge \
     mmr-canopen-bridge \
     mmr-pure-pursuit \
-    mmr-data-logger \
 "
 
 IMAGE_INSTALL = " \
@@ -30,16 +27,16 @@ IMAGE_INSTALL = " \
     u-boot-tools \
     linux-xlnx-udev-rules \
     ${CORE_IMAGE_EXTRA_INSTALL} \
+    mmr-firmware \
+    fpga-manager-script \
+    ethernet-bridge \
+    gpio-systemd \
+    can-enable-service \
     udev-extraconf \
-    spidev-test \
-    mmr-dac-tester \
-    mmr-dac-sin \
-    mmr-wdg-gen \
     tmux \
-    rt-tests \
     ros-core \
     rosidl-adapter \
     ${MMR_ROS_NODE} \
-    apps-initializer \
-    apps-systemd \
+    base-passwd \
+    shadow \
 "
