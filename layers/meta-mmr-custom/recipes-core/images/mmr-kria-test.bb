@@ -1,4 +1,4 @@
-require mmr-kria-base.bb
+require mmr-kria-minimal.bb
 
 TEST_PACKETS = " \
     rt-tests \
@@ -10,5 +10,5 @@ TEST_PACKETS = " \
 "
 
 IMAGE_INSTALL:append = " \
-    ${TEST_PACKETS}
+    ${TEST_PACKETS} \
 "
