@@ -1,4 +1,4 @@
-require mmr-kria-base.bb
+require mmr-kria-minimal.bb
 
 RACE_PACKETS = " \
     mmr-boot \
@@ -9,5 +9,5 @@ RACE_PACKETS = " \
 "
 
 IMAGE_INSTALL:append = " \
-    ${RACE_PACKETS}
+    ${RACE_PACKETS} \
 "
