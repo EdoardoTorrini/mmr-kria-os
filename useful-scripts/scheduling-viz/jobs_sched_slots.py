@@ -1,5 +1,5 @@
 """
-Plots jobs scheduled slot [arrival time, arrival time + exec time], assuming execution on a single CPU
+Plots jobs scheduled slot [arrival time, arrival time + exec time], assuming execution on a single CPU and times is nanoseconds.
 """
 
 import argparse
@@ -9,6 +9,7 @@ import matplotlib.pyplot as pl
 from typing import List
 from os.path import basename, splitext
 
+VERT_SCALING_COEFF: float = 1.5
 
 def main(filenames: List[str], names: List[str] = None):
   if names:
@@ -16,36 +17,56 @@ def main(filenames: List[str], names: List[str] = None):
   else:
     names = [splitext(basename(filename))[0] for filename in filenames]
 
+  sb.set_theme(style="whitegrid", palette="pastel")
   data_frames = []
-  for filename, name in zip(filenames, names):
+  palette = sb.color_palette("pastel")
+
+  for i, (filename, name) in enumerate(zip(filenames, names)):
     with open(filename, "r") as f:
       data = pd.read_csv(f)
-      data["job"] = name
       data_frames.append(data)
+    
+    data["job"] = name
+    data["time"] /= 1e6
+    data["exec_time"] /= 1e6
+    data["color"] = [palette[i % len(filenames)]] * len(data)
   
   df = pd.concat(data_frames)
+  end_times = df["time"]+df["exec_time"]
 
-  sb.set_theme(style="whitegrid")
-  pl.hlines(
-    y=df["job"],
-    xmin=df["time"],
-    xmax=df["time"]+df["exec_time"],
-    linewidth=10
-  )
-  sb.despine(left=True, bottom=True)
+  for job in df["job"].unique():
+    job_idxes = df["job"] == job
+    job_df = df[job_idxes]
+
+    pl.hlines(
+      y=[job] * len(job_df),
+      xmin=job_df["time"],
+      xmax=end_times[job_idxes],
+      linewidth=10,
+      color=job_df["color"],
+      label=job
+    )
+  
+  pl.ylim(-1, len(df["job"].unique())*VERT_SCALING_COEFF)
+  pl.xlim(500e3, 500e3+100)
+
+
+  pl.gca().set_xlabel("Time [ms]")
+  pl.gca().set_ylabel("Job")
+  pl.gca().set_title("Job scheduling vs Time")
+  pl.gca().legend()
+
+  sb.despine(left=True, bottom=False)
+  pl.gca().xaxis.grid(False)
   pl.tight_layout()
-   
-  # g.despine(left=True)
-  # g.set_axis_labels("Job", "Time [us]")
-  # g.legend.set_title("Scheduling vs Time")
-
+  
   pl.show()
 
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(
     prog="jobs_sched_slots.py",
-    description="Plots jobs scheduled slot [arrival time, arrival time + exec time], assuming execution on a single CPU"
+    description="Plots jobs scheduled slot [arrival time, arrival time + exec time], assuming execution on a single CPU and times is nanoseconds."
   )
   
   parser.add_argument(
