@@ -33,6 +33,8 @@ def main(filenames: List[str], names: List[str] = None):
   
   df = pd.concat(data_frames)
   end_times = df["time"]+df["exec_time"]
+  df = df[(df["exec_time"] >= 500e3) & (end_times <= 500e3+100e2)]
+  print(df)
 
   for job in df["job"].unique():
     job_idxes = df["job"] == job
@@ -47,8 +49,10 @@ def main(filenames: List[str], names: List[str] = None):
       label=job
     )
   
+
+  
   pl.ylim(-1, len(df["job"].unique())*VERT_SCALING_COEFF)
-  pl.xlim(500e3, 500e3+100)
+  # pl.xlim(500e3, 500e3+100)
 
 
   pl.gca().set_xlabel("Time [ms]")
