@@ -10,6 +10,8 @@ from typing import List
 from os.path import basename, splitext
 
 VERT_SCALING_COEFF: float = 1.5
+WIN_BASE_TIME: int = 500e9
+WIN_WIDTH: int = 0.2e9
 
 def main(filenames: List[str], names: List[str] = None):
   if names:
@@ -24,17 +26,17 @@ def main(filenames: List[str], names: List[str] = None):
   for i, (filename, name) in enumerate(zip(filenames, names)):
     with open(filename, "r") as f:
       data = pd.read_csv(f)
+      data_end_times = data["time"]+data["exec_time"]
+      data = data[(data["time"] >= WIN_BASE_TIME) & (data_end_times <= WIN_BASE_TIME+WIN_WIDTH)]
       data_frames.append(data)
     
     data["job"] = name
-    data["time"] /= 1e6
-    data["exec_time"] /= 1e6
+    data["time"] /= 1e9
+    data["exec_time"] /= 1e9
     data["color"] = [palette[i % len(filenames)]] * len(data)
   
   df = pd.concat(data_frames)
   end_times = df["time"]+df["exec_time"]
-  df = df[(df["exec_time"] >= 500e3) & (end_times <= 500e3+100e2)]
-  print(df)
 
   for job in df["job"].unique():
     job_idxes = df["job"] == job
@@ -55,7 +57,7 @@ def main(filenames: List[str], names: List[str] = None):
   # pl.xlim(500e3, 500e3+100)
 
 
-  pl.gca().set_xlabel("Time [ms]")
+  pl.gca().set_xlabel("Time [s]")
   pl.gca().set_ylabel("Job")
   pl.gca().set_title("Job scheduling vs Time")
   pl.gca().legend()
